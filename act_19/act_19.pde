@@ -1,8 +1,6 @@
-// 🌟 PROYECTO: Animación Interactiva con Iniciales Geométricas
-// Materia: Proyecto de Implementación de Sitios web Dinámicos
-// EEST N.º 1 - "Eduardo Ader" Vicente López
 
-// 🔴 Variables para múltiples elipses
+
+//  Variables para múltiples elipses
 class Elipse {
   float x, y;
   float xSpeed, ySpeed;
@@ -52,21 +50,21 @@ class Elipse {
   }
 }
 
-// 📷 Variables para las imágenes
+//  Variables para las imágenes
 PImage fondo;
 PImage logo;
 
-// 🎨 Lista de elipses
+//  Lista de elipses
 ArrayList<Elipse> elipses;
 
-// 🎵 Variables de estado
+//  Variables de estado
 boolean mostrarInstrucciones = true;
 int tiempoInstrucciones = 0;
 
 void setup() {
   size(800, 600);
   
-  // 🔹 Cargar imágenes (si no existen, usar colores de fondo)
+  //  Cargar imágenes (si no existen, usar colores de fondo)
   try {
     fondo = loadImage("fondo.jpg");
   } catch (Exception e) {
@@ -79,7 +77,7 @@ void setup() {
     println("No se encontró imagen.png - dibujando logo personalizado");
   }
   
-  // 🔴 Inicializar lista de elipses
+  //  Inicializar lista de elipses
   elipses = new ArrayList<Elipse>();
   
   // Crear 3 elipses iniciales
@@ -91,7 +89,7 @@ void setup() {
 }
 
 void draw() {
-  // 🖼️ Dibujar fondo
+  //  Dibujar fondo
   if (fondo != null) {
     image(fondo, 0, 0, width, height);
     // Overlay semi-transparente para mejor visibilidad
@@ -115,25 +113,25 @@ void draw() {
     dibujarLogoPersonalizado(width - 65, 55, 40);
   }
   
-  // 🔴 Actualizar y dibujar todas las elipses
+  //  Actualizar y dibujar todas las elipses
   for (Elipse e : elipses) {
     e.actualizar();
     e.dibujar();
   }
   
-  // 🔤 Dibujar iniciales (cambiar por las tuyas)
+  //  Dibujar iniciales (cambiar por las tuyas)
   drawInitials();
   
-  // 📊 Información en pantalla
+  //Información en pantalla
   dibujarInfo();
   
-  // 💡 Instrucciones (se ocultan después de 5 segundos)
+  // Instrucciones (se ocultan después de 5 segundos)
   if (mostrarInstrucciones && millis() - tiempoInstrucciones < 5000) {
     dibujarInstrucciones();
   }
 }
 
-// ✍️ Función para dibujar THOMAS con figuras geométricas
+//  Función para dibujar THOMAS con figuras geométricas
 void drawInitials() {
   pushMatrix();
   translate(50, 450);
@@ -144,34 +142,34 @@ void drawInitials() {
   strokeJoin(ROUND);
   noFill();
   
-  // 🔤 Letra T
+  //  Letra T
   line(0, 0, 50, 0);      // Línea horizontal superior
   line(25, 0, 25, 80);    // Línea vertical central
   
-  // 🔤 Letra H
+  //  Letra H
   translate(70, 0);
   line(0, 0, 0, 80);      // Línea vertical izquierda
   line(0, 40, 40, 40);    // Línea horizontal media
   line(40, 0, 40, 80);    // Línea vertical derecha
   
-  // 🔤 Letra O - usando ellipse()
+  //  Letra O - usando ellipse()
   translate(65, 0);
   ellipse(20, 40, 40, 80); // Elipse vertical
   
-  // 🔤 Letra M
+  //  Letra M
   translate(60, 0);
   line(0, 80, 0, 0);      // Línea vertical izquierda
   line(0, 0, 20, 30);     // Diagonal izquierda
   line(20, 30, 40, 0);    // Diagonal derecha
   line(40, 0, 40, 80);    // Línea vertical derecha
   
-  // 🔤 Letra A
+  //  Letra A
   translate(65, 0);
   line(0, 80, 20, 0);     // Diagonal izquierda
   line(20, 0, 40, 80);    // Diagonal derecha
   line(10, 50, 30, 50);   // Barra horizontal
   
-  // 🔤 Letra S - usando arc()
+  // Letra S - usando arc()
   translate(65, 0);
   noFill();
   // Arco superior
@@ -188,7 +186,7 @@ void drawInitials() {
   text("THOMAS", 50, 555);
 }
 
-// 🎨 Función para dibujar logo personalizado (si no hay imagen)
+// Función para dibujar logo personalizado (si no hay imagen)
 void dibujarLogoPersonalizado(float x, float y, float tam) {
   pushMatrix();
   translate(x, y);
@@ -211,7 +209,7 @@ void dibujarLogoPersonalizado(float x, float y, float tam) {
   popMatrix();
 }
 
-// 📊 Mostrar información en pantalla
+// Mostrar información en pantalla
 void dibujarInfo() {
   fill(255, 255, 255, 200);
   textAlign(RIGHT);
@@ -220,7 +218,7 @@ void dibujarInfo() {
   text("FPS: " + int(frameRate), width - 10, height - 20);
 }
 
-// 💡 Instrucciones iniciales
+// Instrucciones iniciales
 void dibujarInstrucciones() {
   fill(0, 0, 0, 180);
   rect(width/2 - 200, 20, 400, 160, 10);
@@ -228,7 +226,7 @@ void dibujarInstrucciones() {
   fill(255, 255, 100);
   textAlign(CENTER);
   textSize(18);
-  text("🎮 INSTRUCCIONES", width/2, 45);
+  text(" INSTRUCCIONES", width/2, 45);
   
   fill(255);
   textSize(14);
@@ -239,7 +237,7 @@ void dibujarInstrucciones() {
   text("Tecla 'H': Ocultar/Mostrar ayuda", width/2, 155);
 }
 
-// 🖱️ Interacción con click del mouse
+//  Interacción con click del mouse
 void mousePressed() {
   if (mouseButton == LEFT) {
     // Click izquierdo: cambiar color de todas las elipses
@@ -255,7 +253,7 @@ void mousePressed() {
   }
 }
 
-// ⌨️ Interacción con teclado
+//  Interacción con teclado
 void keyPressed() {
   if (key == ' ') {
     // Espacio: aumentar velocidad de todas las elipses
@@ -276,3 +274,4 @@ void keyPressed() {
     }
   }
 }
+
